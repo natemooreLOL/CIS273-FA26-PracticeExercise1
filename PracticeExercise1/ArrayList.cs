@@ -92,7 +92,13 @@ public class ArrayList : IList
     /// <param name="existingValue"></param>
     public void InsertAfter(int newValue, int existingValue)
     {
-        throw new NotImplementedException();
+        int index = FirstIndexOf(existingValue);
+        if (index == -1)
+        {
+            Append(newValue);
+            return;
+        }
+        InsertAt(newValue,index+1);
     }
 
     // TODO
@@ -213,7 +219,12 @@ public class ArrayList : IList
     /// <returns></returns>
     public IList Reverse()
     {
-        throw new NotImplementedException();
+        ArrayList newarray = new ArrayList();
+        for(int i = length-1; i>=0; i--)
+        {
+            newarray.Append(array[i]);
+        }
+        return newarray;
     }
 
     private void ShiftRight(int startingIndex)
